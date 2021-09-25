@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addTodo, clearAllTasks, toggleToDo } from './redux/ActionCreators'
+import { addTodo, clearAllTasks, createTask, deleteAllTasks, toggleToDo } from './redux/ActionCreators'
 // Task:  Import functions from ActionCreators
 
 // Task: Assign reducer to prop
 const mapStateToProps = (state) => {
   return {
-    toDoItem: state.ToDo
+    todo: state.ToDo
   };
 };
 
@@ -41,17 +41,19 @@ class Main extends Component {
         <h1>Redux To Do List</h1>
         <ul>
           {/* Task: create a map that displays the list item. don't forget the unique key. we will be using the index of the array*/}
-            {this.props.toDoItem.todo.map((todo, index) => {
+            {this.props.todo.todo.map((todo, index) => {
               return (
                 <li key={index}>
                   <input
                     type='checkbox'
                     // Task: replace true with the property used to show completion
-                    checked={"TOGGLE_COMPLETE"}
+                    checked={todo.complete.false}
                     // Task: dispatch toggle instead of console.log. Use the index of the array
-                    onChange={() => ('Toggling')}
+                    onChange={() => this.props.toggleToDo(index)}
                   />
+
                   {/* Task: Replace this with task activity */}
+                  {todo.activity}
                   {' Item'}
                 </li>
               )}

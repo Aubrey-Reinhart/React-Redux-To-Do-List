@@ -8,7 +8,7 @@ export const addTodo = (todo) => (dispatch) => {
   dispatch(createTask('What should go here?'))
 }
 
-const createTask = (todo) => ({
+export const createTask = (todo) => ({
   // Task: Change this object to a redux action.
   type: ActionTypes.ADD_TODO,
 })
