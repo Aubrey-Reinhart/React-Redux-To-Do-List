@@ -6,12 +6,16 @@ import { addTodo, clearAllTasks, toggleToDo } from './redux/ActionCreators'
 // Task: Assign reducer to prop
 const mapStateToProps = (state) => {
   return {
-    ToDo: state.ToDo
+    toDoItem: state.ToDo
   };
 };
 
 // Task: add functions to dispatch
-const mapDispatchToProps = {}
+const mapDispatchToProps = {
+  addTodo,
+  clearAllTasks,
+  toggleToDo
+};
 
 class Main extends Component {
   constructor(props) {
@@ -31,22 +35,28 @@ class Main extends Component {
   }
 
   render() {
+    console.log('Main Props', this.props)
     return (
       <div className='App'>
         <h1>Redux To Do List</h1>
         <ul>
           {/* Task: create a map that displays the list item. don't forget the unique key. we will be using the index of the array*/}
-          <li key={'unique key'}>
-            <input
-              type='checkbox'
-              // Task: replace true with the property used to show completion
-              checked={true}
-              // Task: dispatch toggle instead of console.log. Use the index of the array
-              onChange={() => console.log('Toggling')}
-            />
-            {/* Task: Replace this with task activity */}
-            {' Item'}
-          </li>
+            {this.props.toDoItem.todo.map((todo, index) => {
+              return (
+                <li key={index}>
+                  <input
+                    type='checkbox'
+                    // Task: replace true with the property used to show completion
+                    checked={"TOGGLE_COMPLETE"}
+                    // Task: dispatch toggle instead of console.log. Use the index of the array
+                    onChange={() => ('Toggling')}
+                  />
+                  {/* Task: Replace this with task activity */}
+                  {' Item'}
+                </li>
+              )}
+            )}
+            
 
           <div className='AddField'>
             <input
