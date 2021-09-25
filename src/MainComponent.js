@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addTodo, clearAllTasks, createTask, deleteAllTasks, toggleToDo } from './redux/ActionCreators'
+import { addTodo, clearAllTasks, deleteAllTasks, toggleToDo } from './redux/ActionCreators'
 // Task:  Import functions from ActionCreators
 
 // Task: Assign reducer to prop
@@ -14,7 +14,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   addTodo,
   clearAllTasks,
-  toggleToDo
+  toggleToDo,
 };
 
 class Main extends Component {
@@ -28,7 +28,7 @@ class Main extends Component {
   handleSubmit() {
     if (this.state.todoInput.length > 0) {
       // Task: add a new line to dispatch the state value to the action creator
-
+      this.props.addTodo(this.state.todoInput);
       //This line doesn't change
       this.setState({ todoInput: '' })
     }
@@ -47,14 +47,13 @@ class Main extends Component {
                   <input
                     type='checkbox'
                     // Task: replace true with the property used to show completion
-                    checked={todo.complete.false}
+                    checked={todo.complete}
                     // Task: dispatch toggle instead of console.log. Use the index of the array
                     onChange={() => this.props.toggleToDo(index)}
                   />
 
                   {/* Task: Replace this with task activity */}
                   {todo.activity}
-                  {' Item'}
                 </li>
               )}
             )}
