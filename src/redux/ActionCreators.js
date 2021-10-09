@@ -28,3 +28,4 @@ export const deleteAllTasks = () => ({
   // Task: Create an object to dispatch. use an object in this file as an example
   type: ActionTypes.DELETE_TASKS,
 })
+

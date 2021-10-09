@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addTodo, clearAllTasks, deleteAllTasks, toggleToDo } from './redux/ActionCreators'
+
 // Task:  Import functions from ActionCreators
 //DONE
 
@@ -45,6 +46,18 @@ class Main extends Component {
       <div className='App'>
         <h1>Redux To Do List</h1>
         <ul>
+          <div className='AddField'>
+            <input
+              type='text'
+              onChange={(e) => this.setState({ todoInput: e.target.value })}
+              value={this.state.todoInput}
+            />
+            <div>
+              <button onClick={() => this.handleSubmit()}>Add Task</button>
+              <button onClick={() => this.props.clearAllTasks()}>Remove Completed</button>
+              <button onClick={() => this.props.deleteAllTasks()}>Empty List</button>
+            </div>
+          </div>
           {/* DONE Task: create a map that displays the list item. don't forget the unique key. we will be using the index of the array*/}
             {this.props.todo.todo.map((todo, index) => {
               return (
@@ -65,20 +78,7 @@ class Main extends Component {
               )}
             )}
             
-
-          <div className='AddField'>
-            <input
-              type='text'
-              onChange={(e) => this.setState({ todoInput: e.target.value })}
-              value={this.state.todoInput}
-            />
-            <div>
-              <button onClick={() => this.handleSubmit()}>Add Task</button>
-              <button onClick={() => this.props.clearAllTasks()}>Remove Completed</button>
-              <button onClick={() => this.props.deleteAllTasks()}>Empty List</button>
-            </div>
-          </div>
-          <div>
+          {/* <div>
             <br />
             Redux Challenge
             <br />
@@ -97,7 +97,7 @@ class Main extends Component {
                 <li>Ability to remove single tasks.</li>
               </ol>
             </div>
-          </div>
+          </div> */}
         </ul>
       </div>
     )
