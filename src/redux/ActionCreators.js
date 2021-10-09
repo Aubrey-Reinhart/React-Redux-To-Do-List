@@ -10,6 +10,7 @@ export const addTodo = (todo) => (dispatch) => {
 
 export const createTask = (todo) => ({
   // Task: Change this object to a redux action.
+  // DONE
   type: ActionTypes.ADD_TODO,
   payload: todo
 })
@@ -25,4 +26,5 @@ export const clearAllTasks = () => ({
 
 export const deleteAllTasks = () => ({
   // Task: Create an object to dispatch. use an object in this file as an example
+  type: ActionTypes.DELETE_TASKS,
 })

@@ -10,6 +10,7 @@ const initialState = {
 export const ToDo = (state = initialState, action) => {
   switch (action.type) {
     // TASK: Change the cases to match with the code
+    //DONE
     case ActionTypes.ADD_TODO:
       const todo = action.payload
       todo.id = state.todo.length
@@ -22,7 +23,8 @@ export const ToDo = (state = initialState, action) => {
       return { ...state, todo: state.todo.filter((task) => !task.complete) };
     case ActionTypes.DELETE_TASKS:
       // TASK implement the final action type
-      return {}
+      //DONE
+      return { ...state, todo: state.todo.filter((task) => !task) };
     default:
       return state
   }

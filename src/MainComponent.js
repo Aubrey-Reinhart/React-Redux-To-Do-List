@@ -2,8 +2,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addTodo, clearAllTasks, deleteAllTasks, toggleToDo } from './redux/ActionCreators'
 // Task:  Import functions from ActionCreators
+//DONE
 
 // Task: Assign reducer to prop
+//DONE
 const mapStateToProps = (state) => {
   return {
     todo: state.ToDo
@@ -11,10 +13,12 @@ const mapStateToProps = (state) => {
 };
 
 // Task: add functions to dispatch
+//DONE
 const mapDispatchToProps = {
   addTodo,
   clearAllTasks,
   toggleToDo,
+  deleteAllTasks
 };
 
 class Main extends Component {
@@ -28,6 +32,7 @@ class Main extends Component {
   handleSubmit() {
     if (this.state.todoInput.length > 0) {
       // Task: add a new line to dispatch the state value to the action creator
+      //DONE
       this.props.addTodo(this.state.todoInput);
       //This line doesn't change
       this.setState({ todoInput: '' })
@@ -40,19 +45,21 @@ class Main extends Component {
       <div className='App'>
         <h1>Redux To Do List</h1>
         <ul>
-          {/* Task: create a map that displays the list item. don't forget the unique key. we will be using the index of the array*/}
+          {/* DONE Task: create a map that displays the list item. don't forget the unique key. we will be using the index of the array*/}
             {this.props.todo.todo.map((todo, index) => {
               return (
                 <li key={index}>
                   <input
                     type='checkbox'
                     // Task: replace true with the property used to show completion
+                    //DONE
                     checked={todo.complete}
                     // Task: dispatch toggle instead of console.log. Use the index of the array
+                    //DONe
                     onChange={() => this.props.toggleToDo(index)}
                   />
 
-                  {/* Task: Replace this with task activity */}
+                  {/* DONE Task: Replace this with task activity */}
                   {todo.activity}
                 </li>
               )}
@@ -67,12 +74,8 @@ class Main extends Component {
             />
             <div>
               <button onClick={() => this.handleSubmit()}>Add Task</button>
-              <button onClick={() => alert('Replace with dispatched function for clearing values')}>
-                Remove Completed
-              </button>
-              <button onClick={() => alert('Replace with dispatched function for clearing the list')}>
-                Empty List
-              </button>
+              <button onClick={() => this.props.clearAllTasks()}>Remove Completed</button>
+              <button onClick={() => this.props.deleteAllTasks()}>Empty List</button>
             </div>
           </div>
           <div>
