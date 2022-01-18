@@ -51,6 +51,7 @@ class Main extends Component {
               type='text'
               onChange={(e) => this.setState({ todoInput: e.target.value })}
               value={this.state.todoInput}
+              placeholder='Type Task Here'
             />
             <div>
               <button onClick={() => this.handleSubmit()}>Add Task</button>
@@ -71,7 +72,6 @@ class Main extends Component {
                     //DONe
                     onChange={() => this.props.toggleToDo(index)}
                   />
-
                   {/* DONE Task: Replace this with task activity */}
                   {todo.activity}
                 </li>

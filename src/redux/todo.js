@@ -1,10 +1,7 @@
 import * as ActionTypes from './ActionTypes'
 
 const initialState = {
-  todo: [
-    { activity: 'First ToDo', complete: false },
-    { activity: 'Second ToDo', complete: true },
-  ],
+  todo: [],
 }
 
 export const ToDo = (state = initialState, action) => {
